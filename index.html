@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="scss/style.scss">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="title">
+            <div class="center">国际影城</div>
+        </div>
+        <div class="left">影城<div class="down-arrow"></div></div>
+        <div class="right"><span>!</span></div>
+        <p class="title-info">影院重装开业，会员卡享受5折优惠</p>
+    </header>
+    <nav class="nav swiper-container">
+        <ul class="item-lists clearfix swiper-wrapper">
+            <li class="m-item swiper-slide active"><img src="img/juren.png" alt=""></li>
+            <li class="m-item swiper-slide"><img src="img/juren.png" alt=""></li>
+            <li class="m-item swiper-slide"><img src="img/juren.png" alt=""></li>
+            <li class="m-item swiper-slide"><img src="img/juren.png" alt=""></li>
+            <li class="m-item swiper-slide"><img src="img/juren.png" alt=""></li>
+            <li class="m-item swiper-slide"><img src="img/juren.png" alt=""></li>
+            <li class="m-item swiper-slide"><img src="img/juren.png" alt=""></li>
+        </ul>
+    </nav>
+
+<textarea name="" id="mtpl" cols="30" rows="10" style="display:none">
+<!--<div class="wrap">
+    <% for(var i=0; i<lists.length;i++){ %>
+
+        <% if(i==0){ %>
+            <section class="info-area">
+                <div class="new">
+                        <div class="top_b_t">
+                            <b></b>
+                            <h4><%=lists[i].movie_name%></h4>
+                            <p>片长：<span>97</span>分钟</p>
+                            <i>8.7分</i>
+                        </div>
+                        <div class="top_b_b">
+                            <p><%=lists[i].movie_desc%></p>
+                        </div>
+                </div>
+                <div class="dingyue">
+                    <p>中午12：00前，会员统一价25元，限购2张<span class="right-arrow"></span></p>
+                </div>
+                <div class="time-lists">
+                    <div class="swiper-container movie-date">
+                        <ul class="swiper-wrapper">
+                            <% for( var j = 0; j<lists[i].days.length; j++ ){ %>
+                                <li class="swiper-slide"><%=lists[i].days[j].show_date %></li>
+                             <% } %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-table">
+                    <p class="warn"><span>!</span>温馨提示：电影开场前30分钟关闭在线售票</p>
+                    <div class="info-list">
+                         <table class="">
+                            <% for(var k in lists[i].shows){ %>
+                            <% for(var m in lists[i].shows[k] ) { %>
+                            <tr>
+                                <td>
+                                    <p class="dark"><%= lists[i].shows[k][m].start_time %></p>
+                                    <p><%= lists[i].shows[k][m].end_time %>散场</p>
+                                </td>
+                                <td>
+                                    <p class="dark"><%= lists[i].shows[k][m].language %></p>
+                                    <p><%= lists[i].shows[k][m].hall_name %></p>
+                                </td>
+                                <td>
+                                    <p class="price">￥<%= lists[i].shows[k][m].market_price %></p>
+                                    <p class="vip">
+                                        <em class="vip_e">会员</em>
+                                        <em>￥<%= lists[i].shows[k][m].member_price %></em>
+                                    </p>
+                                    <p>影院价 ￥<%= lists[i].shows[k][m].price %></p>
+                                </td>
+                                <td>
+                                    <% if(lists[i].shows[k][m].is_all_sold==0){ %>
+                                        <span class="buy on-sale">选座购票</span>
+                                    <% }else{ %>
+                                        <span class="buy off-sale">场次过期</span>
+                                    <% } %>
+                                </td>
+                            </tr>
+                            <% } %>
+                            <% } %>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        <% }else{ %>
+             <section class="info-area hide">
+
+             </section>
+         <% } %>
+    <% } %>
+</div>-->
+    {{each lists}}
+        {{ if $index==0}}
+            <section class="info-area">
+        {{else}}
+            <section class="info-area hide">
+        {{/if}}
+                <div class="new">
+                            <div class="top_b_t">
+                                <b></b>
+                                <h4>{{ $value.movie_name }}</h4>
+                                <p>片长：<span>97</span>分钟</p>
+                                <i>8.7分</i>
+                            </div>
+                            <div class="top_b_b">
+                                <p>{{ $value.movie_desc }}</p>
+                            </div>
+                    </div>
+                <div class="dingyue">
+                        <p>中午12：00前，会员统一价25元，限购2张<span class="right-arrow"></span></p>
+                    </div>
+                <div class="time-lists">
+                    <div class="swiper-container movie-date">
+                        <ul class="swiper-wrapper">
+                            {{each $value.days as v i}}
+                            {{if i!==0}}
+                            <li class="swiper-slide date-item">{{v.show_date}}</li>
+                            {{else}}
+                            <li class="self-active swiper-slide date-item">{{v.show_date}}</li>
+                            {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-table">
+                    <p class="warn"><span>!</span>温馨提示：电影开场前30分钟关闭在线售票</p>
+                    <div class="info-list">
+                        {{each $value.shows}}
+                        <table class="">
+                            {{each $value as content index}}
+                            <tr>
+                                <td>
+                                    <p class="dark">{{content.start_time}}</p>
+                                    <p>{{content.end_time}}散场</p>
+                                </td>
+                                <td>
+                                    <p class="dark">{{content.language}}</p>
+                                    <p>{{content.hall_name}}</p>
+                                </td>
+                                <td>
+                                    <p>￥{{content.market_price}}</p>
+                                    <p class="vip">
+                                        <em class="vip_e">会员</em>
+                                        <em>￥{{content.member_price}}</em>
+                                    </p>
+                                    <p>影院价￥{{content.price}}</p>
+                                </td>
+                                <td>
+                                    {{if content.is_all_sold == 0}}
+                                    <span class="buy on-sale">选座购票</span>
+                                    {{else}}
+                                    <span class="buy disable off-sale">场次过期</span>
+                                    {{/if}}
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                        {{/each}}
+                    </div>
+                </div>
+            </section>
+    {{/each}}
+</textarea>
+    <div class="wrap">
+    </div>
+<script src="swiper/require.js" data-main="js/main"></script>
+
+</body>
+</html>

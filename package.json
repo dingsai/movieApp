@@ -1,0 +1,29 @@
+{
+  "name": "movie",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "gulp": "^3.9.1",
+    "gulp-browser": "^3.0.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dingsai/DS-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dingsai/DS-App/issues"
+  },
+  "homepage": "https://github.com/dingsai/DS-App#readme",
+  "description": ""
+}
